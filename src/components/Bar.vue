@@ -1,7 +1,7 @@
 <script setup>
 import { ref, computed } from 'vue';
 
-const { index, progress, total } = defineProps({
+const props = defineProps({
   index: {
     type: Number,
     required: true
@@ -17,10 +17,10 @@ const { index, progress, total } = defineProps({
 })
 
 const styles = computed(() => {
-  return {transform: `rotate(${index * (360 / total)}deg)`,}
+  return {transform: `rotate(${props.index * (360 / props.total)}deg)`,}
 })
 
-const inputValue = ref(progress)
+const inputValue = ref(props.progress)
 </script>
 
 <template>
@@ -30,8 +30,9 @@ const inputValue = ref(progress)
     <input 
     type="range" 
     min="0"
-    :value="inputValue"
+    :value="props.progress"
     max="100"
+    @input="handleInput"
     >  
   </li>
 </template>

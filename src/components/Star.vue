@@ -1,7 +1,7 @@
 <script setup>
 import Bar from './Bar.vue'
 
-const { total, progress } = defineProps({
+const props = defineProps({
   total: {
     type: Number,
     required: true
@@ -16,11 +16,11 @@ const { total, progress } = defineProps({
 <template>
   <ul class="star">
     <Bar 
-    v-for="(item, index) in total"
+    v-for="(item, index) in props.total"
     :key="index"
     :index="index"
-    :progress="progress"
-    :total="total"
+    :progress="props.progress"
+    :total="props.total"
     ></Bar>
   </ul>
 </template>
